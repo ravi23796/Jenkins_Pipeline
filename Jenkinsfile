@@ -2,12 +2,16 @@ pipeline {
     agent any
     stages {
         stage('Prerequisites') {
+            environment {
+                SAMPLE = 'sample variable'
+            }
             steps {
                 sh '''
                     cd /scratch/hgbu/chef-repo/cookbooks
                     pwd
                     whoami
                     knife client list
+                    echo $SAMPLE
                 '''
                 sh '''
                     echo "Multiline shell steps works too"
