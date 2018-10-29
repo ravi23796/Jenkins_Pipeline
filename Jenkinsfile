@@ -15,43 +15,43 @@ pipeline {
                 '''
             }
         }      
-        stage('Step 4') {
+        stage('4.Uploading Databag') {
             steps {
                 sh 'echo "Step 5"'
             }
         }
-        stage('Step 5') {
+        stage('5.Vault Installation') {
             steps {
                 sh 'echo "Step 5"'
             }
         }
         
-        stage('Step 6') {
+        stage('6.OCMS Prerequisites') {
             steps {
                 sh 'echo "Step 6"'
             }
         }
-        stage('Step 7') {
+        stage('7.DB Installation') {
             steps {
                 sh 'echo "Step 7"'
             }
         }
-        stage('Step 8') {
+        stage('8.MI Domain Creation') {
             steps {
                 sh 'echo "Step 8"'
             }
         }
-        stage('Step 9') {
+        stage('9.Starting Servers') {
             steps {
                 sh 'echo "Step 9"'
             }
         }
-        stage('Step 10') {
+        stage('10.OCMS Deployments') {
             steps {
                 sh 'echo "Step 10"'
             }
         }
-        stage('Step 11') {
+        stage('11.Restarting All Servers') {
             steps {
                 sh 'echo "Step 11"'
             }
