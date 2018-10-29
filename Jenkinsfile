@@ -14,6 +14,16 @@ pipeline {
                     ls -lah
                 '''
             }
+        }      
+        stage('Bootstrapping node') {
+            steps {
+                sh 'echo "Bootstrapping done"'
+            }
+        }
+        stage('Step 4') {
+            steps {
+                sh 'echo "Step 5"'
+            }
         }
         stage('Step 5') {
             steps {
