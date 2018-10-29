@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                cd /scratch/hgbu/chef-repo/cookbooks
+                sh 'cd /scratch/hgbu/chef-repo/cookbooks'
                 sh 'knife client list'
                 sh '''
                     echo "Multiline shell steps works too"
