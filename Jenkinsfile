@@ -3,8 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'cd /scratch'
                 sh 'pwd'
-                sh 'knife client list'
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
