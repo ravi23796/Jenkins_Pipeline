@@ -15,11 +15,6 @@ pipeline {
                 '''
             }
         }      
-        stage('Bootstrapping node') {
-            steps {
-                sh 'echo "Bootstrapping done"'
-            }
-        }
         stage('Step 4') {
             steps {
                 sh 'echo "Step 5"'
