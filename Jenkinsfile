@@ -10,11 +10,6 @@ pipeline {
                 '''
             }
         }
-    }
-}
-pipeline {
-    agent any
-    stages {
         stage('Test') {
             steps {
                 sh 'echo "Fail!"; exit 1'
@@ -39,4 +34,4 @@ pipeline {
             echo 'For example, if the Pipeline was previously failing but is now successful'
         }
     }
-}
+}    
