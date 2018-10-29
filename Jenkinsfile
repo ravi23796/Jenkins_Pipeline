@@ -25,7 +25,7 @@ pipeline {
                 winRMClient {
                         hostName('wfivm00593.us.oracle.com')
                         credentialsId('OCMSLogin')       
-                        invokeCommand('mkdir C:\chef\Pipeline')
+                        invokeCommand('mkdir C:\\chef\\Pipeline')
                 }
             }
         }
