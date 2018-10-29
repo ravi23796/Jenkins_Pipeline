@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    cd /scratch
+                    cd /scratch/hgbu
                     pwd
                 '''
                 sh '''
