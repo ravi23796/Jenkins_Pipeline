@@ -22,7 +22,8 @@ pipeline {
         stage('4.Uploading Databag') {
             steps {
                 sh 'echo "Step 5"'
-                winRMClient {
+                winRMClient 
+                {
                         hostName('wfivm00593.us.oracle.com')
                         credentialsId('OCMSLogin')       
                         invokeCommand('mkdir C:\\chef\\Pipeline')
