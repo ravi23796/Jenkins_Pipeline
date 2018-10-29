@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'cd /scratch'
-                sh 'pwd'
+                sh '''
+                    cd /scratch
+                    pwd
+                '''
                 sh '''
                     echo "Multiline shell steps works too"
                     ls -lah
