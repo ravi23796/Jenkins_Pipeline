@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Prerequisites') {
             steps {
                 sh '''
                     cd /scratch/hgbu/chef-repo/cookbooks
@@ -15,11 +15,42 @@ pipeline {
                 '''
             }
         }
-        stage('Test') {
+        stage('Step 5') {
             steps {
-                sh 'echo "Fail!"; exit 0'
+                sh 'echo "Step 5"'
             }
         }
+        
+        stage('Step 6') {
+            steps {
+                sh 'echo "Step 6"'
+            }
+        }
+        stage('Step 7') {
+            steps {
+                sh 'echo "Step 7"'
+            }
+        }
+        stage('Step 8') {
+            steps {
+                sh 'echo "Step 8"'
+            }
+        }
+        stage('Step 9') {
+            steps {
+                sh 'echo "Step 9"'
+            }
+        }
+        stage('Step 10') {
+            steps {
+                sh 'echo "Step 10"'
+            }
+        }
+        stage('Step 11') {
+            steps {
+                sh 'echo "Step 11"'
+            }
+        }        
     }
     post {
         always {
