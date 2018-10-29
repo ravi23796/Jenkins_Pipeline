@@ -67,6 +67,13 @@ pipeline {
         }
         success {
             echo 'This will run only if successful'
+            mail to: 'ravi.al.kumar@oracle.com',
+             subject: "Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Pipeline ${env.BUILD_URL} completed successfully"
+ 
+            slackSend channel: '#teamoffriends',
+                  color: 'good',
+                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
         failure {
             echo 'This will run only if failed'
