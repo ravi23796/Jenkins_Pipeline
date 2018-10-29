@@ -4,8 +4,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    cd /scratch/hgbu
+                    cd /scratch/
                     pwd
+                    whoami
                 '''
                 sh '''
                     echo "Multiline shell steps works too"
