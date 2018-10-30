@@ -5,10 +5,9 @@ pipeline {
             environment {
                 SAMPLE = 'sample variable'
             }
-            steps {
-                bat '''
-                    winRMClient credentialsId: 'OCMSLogin', hostName: 'wfivm00593.us.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\Monal')]
-                '''                
+            steps 
+            {                
+                    winRMClient credentialsId: 'OCMSLogin', hostName: 'wfivm00593.us.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\Monal')]                              
             }
         }                      
     }
