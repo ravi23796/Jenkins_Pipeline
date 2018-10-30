@@ -12,41 +12,8 @@ pipeline {
                     echo %SAMPLE%
                 '''                
             }
-        }      
-        stage('4.Uploading Databag') {
-            steps {                
-            }
-        }
-        stage('5.Vault Installation') {
-            steps {                
-            }
-        }
-        
-        stage('6.OCMS Prerequisites') {
-            steps {                
-            }
-        }
-        stage('7.DB Installation') {
-            steps {                
-            }
-        }
-        stage('8.MI Domain Creation') {
-            steps {                
-            }
-        }
-        stage('9.Starting Servers') {
-            steps {                
-            }
-        }
-        stage('10.OCMS Deployments') {
-            steps {                
-            }
-        }
-        stage('11.Restarting All Servers') {
-            steps {                
-            }
-        }        
-    }
+        }             
+        }            
     post {
         always {
             echo 'This will always run'
