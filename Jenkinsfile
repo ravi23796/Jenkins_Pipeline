@@ -1,88 +1,80 @@
-pipeline 
-{
+pipeline {
     agent any
-    stages 
-    {
-        stage('Prerequisites') 
-        {
-            environment 
-            {
+    stages {
+        stage('Prerequisites') {
+            environment {
                 SAMPLE = 'sample variable'
             }
-            steps 
-            {
-                bat '''
-                    cd C:\\chef\\cookbooks
-                    chef generate cookbook pipeline
-                    knife cookbook upload pipeline
-                    echo %SAMPLE%
-                '''                
+            steps {
+                sh '''
+                    cd /scratch/hgbu/chef-repo/cookbooks
+                    pwd
+                    whoami
+                    knife client list
+                    echo $SAMPLE
+                '''
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            }
+        }      
+        stage('4.Uploading Databag') {
+            steps {
+                sh 'echo "Step 5"'
+                winRMClient credentialsId: 'OCMSLogin', hostName: 'wfivm00593.us.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\chef\\Pipeline')]
             }
         }
-        stage('4.Uploading Databag') 
-        {
-            steps 
-            {
-                bat 'echo "Step 5"'                
-            }
-        }
-        stage('5.Vault Installation') 
-        {
-            steps 
-            {
-                bat 'echo "Step 5"'
+        stage('5.Vault Installation') {
+            steps {
+                sh 'echo "Step 5"'
             }
         }
         
-        stage('6.OCMS Prerequisites') 
-        {
-            steps 
-            {
-                bat 'echo "Step 6"'
+        stage('6.OCMS Prerequisites') {
+            steps {
+                sh 'echo "Step 6"'
             }
         }
-        stage('7.DB Installation') 
-        {
-            steps 
-            {
-                bat 'echo "Step 7"'
+        stage('7.DB Installation') {
+            steps {
+                sh 'echo "Step 7"'
             }
         }
-        stage('8.MI Domain Creation') 
-        {
-            steps 
-            {
-                bat 'echo "Step 8"'
+        stage('8.MI Domain Creation') {
+            steps {
+                sh 'echo "Step 8"'
             }
         }
-        stage('9.Starting Servers') 
-        {
-            steps 
-            {
-                bat 'echo "Step 9"'
+        stage('9.Starting Servers') {
+            steps {
+                sh 'echo "Step 9"'
             }
         }
-        stage('10.OCMS Deployments') 
-        {
-            steps 
-            {
-                bat 'echo "Step 10"'
+        stage('10.OCMS Deployments') {
+            steps {
+                sh 'echo "Step 10"'
             }
         }
-        stage('11.Restarting All Servers') 
-        {
-            steps 
-            {
-                bat 'echo "Step 11"'
+        stage('11.Restarting All Servers') {
+            steps {
+                sh 'echo "Step 11"'
             }
-        }
-    }            
+        }        
+    }
     post {
         always {
             echo 'This will always run'
         }
         success {
-            echo 'This will run only if successful'            
+            echo 'This will run only if successful'
+            mail to: 'ravi.al.kumar@oracle.com',
+             subject: "Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Pipeline ${env.BUILD_URL} completed successfully"
+ 
+            slackSend channel: '#teamoffriends',
+                  color: 'good',
+                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
         }
         failure {
             echo 'This will run only if failed'
