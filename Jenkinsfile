@@ -6,60 +6,11 @@ pipeline {
                 SAMPLE = 'sample variable'
             }
             steps {
-                sh '''
-                    cd /scratch/hgbu/chef-repo/cookbooks
-                    pwd
-                    whoami
-                    knife client list
-                    echo $SAMPLE
-                '''
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                bat '''
+                    winRMClient credentialsId: 'OCMSLogin', hostName: 'wfivm00593.us.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\Monal')]
+                '''                
             }
-        }      
-        stage('4.Uploading Databag') {
-            steps {
-                sh 'echo "Step 5"'                
-            }
-        }
-        stage('5.Vault Installation') {
-            steps {
-                sh 'echo "Step 5"'
-            }
-        }
-        
-        stage('6.OCMS Prerequisites') {
-            steps {
-                sh 'echo "Step 6"'
-            }
-        }
-        stage('7.DB Installation') {
-            steps {
-                sh 'echo "Step 7"'
-            }
-        }
-        stage('8.MI Domain Creation') {
-            steps {
-                sh 'echo "Step 8"'
-            }
-        }
-        stage('9.Starting Servers') {
-            steps {
-                sh 'echo "Step 9"'
-            }
-        }
-        stage('10.OCMS Deployments') {
-            steps {
-                sh 'echo "Step 10"'
-            }
-        }
-        stage('11.Restarting All Servers') {
-            steps {
-                sh 'echo "Step 11"'
-            }
-        }        
+        }                      
     }
     post {
         always {
