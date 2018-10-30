@@ -7,7 +7,7 @@ pipeline {
             }
             steps {
                 bat '''
-                    cd C:\chef
+                    cd C:\\chef
                     knife client list
                     echo %SAMPLE%
                 '''                
