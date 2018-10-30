@@ -6,59 +6,44 @@ pipeline {
                 SAMPLE = 'sample variable'
             }
             steps {
-                sh '''
-                    cd /scratch/hgbu/chef-repo/cookbooks
-                    pwd
-                    whoami
+                bat '''
+                    cd C:\chef
                     knife client list
-                    echo $SAMPLE
-                '''
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
+                    echo %SAMPLE%
+                '''                
             }
         }      
         stage('4.Uploading Databag') {
-            steps {
-                sh 'echo "Step 5"'
-                winRMClient credentialsId: 'OCMSLogin', hostName: 'wfivm00593.us.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\chef\\Pipeline')]
+            steps {                
             }
         }
         stage('5.Vault Installation') {
-            steps {
-                sh 'echo "Step 5"'
+            steps {                
             }
         }
         
         stage('6.OCMS Prerequisites') {
-            steps {
-                sh 'echo "Step 6"'
+            steps {                
             }
         }
         stage('7.DB Installation') {
-            steps {
-                sh 'echo "Step 7"'
+            steps {                
             }
         }
         stage('8.MI Domain Creation') {
-            steps {
-                sh 'echo "Step 8"'
+            steps {                
             }
         }
         stage('9.Starting Servers') {
-            steps {
-                sh 'echo "Step 9"'
+            steps {                
             }
         }
         stage('10.OCMS Deployments') {
-            steps {
-                sh 'echo "Step 10"'
+            steps {                
             }
         }
         stage('11.Restarting All Servers') {
-            steps {
-                sh 'echo "Step 11"'
+            steps {                
             }
         }        
     }
@@ -70,11 +55,7 @@ pipeline {
             echo 'This will run only if successful'
             mail to: 'ravi.al.kumar@oracle.com',
              subject: "Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Pipeline ${env.BUILD_URL} completed successfully"
- 
-            slackSend channel: '#teamoffriends',
-                  color: 'good',
-                  message: "The pipeline ${currentBuild.fullDisplayName} completed successfully."
+             body: "Pipeline ${env.BUILD_URL} completed successfully" 
         }
         failure {
             echo 'This will run only if failed'
