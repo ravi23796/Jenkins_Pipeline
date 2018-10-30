@@ -19,10 +19,7 @@ pipeline {
             echo 'This will always run'
         }
         success {
-            echo 'This will run only if successful'
-            mail to: 'ravi.al.kumar@oracle.com',
-             subject: "Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Pipeline ${env.BUILD_URL} completed successfully" 
+            echo 'This will run only if successful'            
         }
         failure {
             echo 'This will run only if failed'
