@@ -7,7 +7,7 @@ pipeline {
             }
             steps 
             {                
-                    winRMClient credentialsId: 'OCMSLogin', hostName: 'OCMS_HOSTNAME', winRMOperations: [invokeCommand('mkdir C:\\Monal')]                              
+                    winRMClient credentialsId: 'OCMS_CREDENTIALS', hostName: 'OCMS_HOSTNAME', winRMOperations: [invokeCommand('mkdir C:\\Monal')]                              
             }
         }                      
     }
