@@ -7,7 +7,7 @@ pipeline {
             }
             steps 
             {                
-                    winRMClient credentialsId: 'llg00fbd.uk.oracle.com_kurravi_1540968944', hostName: 'llg00fbd.uk.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\Monal')]                              
+                    winRMClient credentialsId: 'ORADEV', hostName: 'llg00fgg.uk.oracle.com', winRMOperations: [invokeCommand('mkdir C:\\Monal')]                              
             }
         }                      
     }
